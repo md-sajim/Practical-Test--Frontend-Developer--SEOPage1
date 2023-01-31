@@ -5,20 +5,51 @@ const underreview = document.getElementById('underreview')
 const completed = document.getElementById('completed')
 const overdate = document.getElementById('overdate')
 
-const exampleData =[
-    {id:1},{id:1},{id:3},{id:4},{id:5},{id:6},{id:7}
+const exampleData = [
+    { id: 1 }, { id: 1 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }, { id: 7 }
 ]
-
-
-function attacment(){
+function file(){
+    const fileData = document.getElementById('file')
+    fileData.onchange =({target})=>{
+        let file = target.files[0];
+        if(file){
+            let fileName = file.name;
+            uplodefile(fileName)
+        }
+    }
     console.log('sajim')
 }
-function clintData(exampleData,allsection) {
+function uplodefile (name){
+
+}
+
+function attacment() {
+    const modal = document.getElementById('modal');
+    modal.innerHTML=``;
+    const div = document.createElement('div');
+    div.innerHTML = `
+    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                    <input id="file" type="file" />
+                    <button onclick="file()" type="button" class="btn btn-secondary">Save</button>
+                    </div>
+                </div>
+    `
+modal.appendChild(div)
+}
+function clintData(exampleData, allsection) {
     exampleData.forEach(element => {
-        const {id} = element;
+        const { id } = element;
         const div = document.createElement('div');
-        console.log(element)
-        div.innerHTML=`<div class="bg-white mx-1 mb-2 p-2 ">
+
+        div.innerHTML = `<div class="bg-white mx-1 mb-2 p-2 ">
         <div class="d-flex justify-content-between">
             <div class="d-flex align-items-center">
                 <img src="asset/clint.png" class="rounded-circle" style="width: 30px;" alt="Avatar" />
@@ -91,13 +122,13 @@ function clintData(exampleData,allsection) {
             </div>
         </div>
     </div>`
-    allsection.appendChild(div)
+        allsection.appendChild(div)
     });
-    
+
 }
-clintData(exampleData,incomplete)
-clintData(exampleData,toDo)
-clintData(exampleData,doing)
-clintData(exampleData,underreview)
-clintData(exampleData,completed)
-clintData(exampleData,overdate)
+clintData(exampleData, incomplete)
+clintData(exampleData, toDo)
+clintData(exampleData, doing)
+clintData(exampleData, underreview)
+clintData(exampleData, completed)
+clintData(exampleData, overdate)
